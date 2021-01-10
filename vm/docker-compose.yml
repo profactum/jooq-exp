@@ -1,0 +1,32 @@
+version: '3.8'
+
+networks:
+  j-ex:
+    name: j-ex
+
+services:
+
+  postgres:
+    image: postgres
+    container_name: j-ex-postgres
+    restart: always
+    hostname: postgres
+    ports:
+      - 15432:5432
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - j-ex
+
+  redis:
+    image: redis
+    container_name: j-ex-redis
+    restart: always
+    hostname: redis
+    ports:
+      - 16379:6379
+    networks:
+      - j-ex
+
